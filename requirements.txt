@@ -1,0 +1,10 @@
+# Install PyTorch separately using the selector at https://pytorch.org/get-started/locally/
+# when enabling CUDA Whisper on Windows.
+ollama>=0.6,<1
+faster-whisper>=1.2,<2
+sounddevice>=0.5,<1
+soundfile>=0.13,<1
+numpy>=1.26,<3
+scipy>=1.11,<2
+charset-normalizer>=3.4,<4
+matplotlib>=3.8,<4

@@ -1,0 +1,10 @@
+[project]
+name = "nova-local-assistant"
+version = "1.1.0"
+description = "A private Windows desktop assistant powered by local Ollama models."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
