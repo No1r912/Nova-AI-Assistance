@@ -21,6 +21,11 @@ def extract(text):
     if not text:
         return {"remember": False}
 
+    # Explicit opt-out wins over every automatic pattern below. This keeps
+    # natural chat from becoming a surprise diary.
+    if re.search(r"\b(?:don't|do not|dont) remember\b", text, re.IGNORECASE):
+        return {"remember": False}
+
     name = _match(text, (r"\bmy name is\s+(.+)$", r"\bcall me\s+(.+)$"))
     if name:
         return {"remember": True, "type": "profile", "key": "name", "value": name}

@@ -4,8 +4,13 @@ from core.utils import load_json, save_json
 from core.config import SETTINGS_FILE
 
 DEFAULT_SETTINGS = {
-    "ai": {"model": "gemma3:4b", "temperature": 0.55},
+    "ai": {
+        "model": "gemma3:4b",
+        "temperature": 0.55,
+        "personality": "cheeky",
+    },
     "audio": {"input_device": None, "sample_rate": 16000, "record_seconds": 8},
+    "ui": {"language": "English", "geometry": "1120x760", "speak_replies": False},
 }
 settings = load_json(SETTINGS_FILE, {})
 

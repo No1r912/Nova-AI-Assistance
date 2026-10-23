@@ -1,7 +1,5 @@
 """Local Ollama integration for Nova."""
 
-import ollama
-
 from core.config import (
     LLM_KEEP_ALIVE,
     LLM_MODEL,
@@ -17,6 +15,9 @@ def generate(messages):
     """Send a conversation to the local Ollama server and return its text."""
     model = get_setting("ai.model", LLM_MODEL)
     try:
+        # Keep the desktop shell available even if dependencies have not yet
+        # been installed; the user gets a useful reply when they send a prompt.
+        import ollama
         client = ollama.Client(host=OLLAMA_HOST)
         response = client.chat(
             model=model,

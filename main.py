@@ -1,13 +1,10 @@
 import argparse
 
-from core.conversation import respond
 from core.config import AI_NAME
-from core.logger import info, error
-
+from core.conversation import respond
+from core.logger import error, info
 from voice.listen import listen
 from voice.speak import speak
-
-
 
 # =========================
 # Text Mode
@@ -50,7 +47,7 @@ def text_mode():
             speak(answer)
 
 
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
 
             error(
                 f"Text mode error: {e}"
@@ -70,7 +67,6 @@ def text_mode():
 def voice_mode():
 
     print(f"{AI_NAME} voice chat started. Speak naturally; say 'exit voice chat' to stop.")
-    speak("Voice chat is ready. What would you like to talk about?")
 
 
 
@@ -123,15 +119,15 @@ def voice_mode():
 
 
 
-        except Exception as e:
+        except (OSError, RuntimeError, ValueError) as exc:
 
             error(
-                f"Voice mode error: {e}"
+                f"Voice mode error: {exc}"
             )
 
             print(
                 "Error:",
-                e
+                exc
             )
 
 

@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from voice.speak import speak
+from voice.speak import _fallback_speech_text, speak
 
 
 class SpeakTests(unittest.TestCase):
@@ -16,3 +16,6 @@ class SpeakTests(unittest.TestCase):
         with patch("voice.speak._speak_with_piper") as piper:
             self.assertTrue(speak("   "))
             piper.assert_not_called()
+
+    def test_fallback_text_removes_emoji_and_unsupported_scripts(self):
+        self.assertEqual(_fallback_speech_text("Hello 😄 你好"), "Hello")

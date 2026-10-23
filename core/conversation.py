@@ -8,7 +8,7 @@ from core.memory_extractor import extract
 from core import memory as memory_manager
 from core.summarizer import summarize
 from core.utils import load_json, save_json
-from core.personality import SYSTEM_PROMPT
+from core.personality import get_system_prompt
 from core.commands import handle as handle_command
 from core.assistant_tools import handle as handle_tool
 
@@ -114,7 +114,7 @@ def respond(user):
 
             {
                 "role": "system",
-                "content": SYSTEM_PROMPT
+                "content": get_system_prompt()
             }
 
         ]

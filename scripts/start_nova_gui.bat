@@ -2,6 +2,7 @@
 setlocal
 set "NOVA_ROOT=%~dp0.."
 set "NOVA_PYTHON=%NOVA_ROOT%\.venv\Scripts\pythonw.exe"
+if not exist "%NOVA_PYTHON%" set "NOVA_PYTHON=C:\Python315\pythonw.exe"
 if not exist "%NOVA_PYTHON%" exit /b 1
 
 cd /d "%NOVA_ROOT%"

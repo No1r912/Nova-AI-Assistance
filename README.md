@@ -8,7 +8,9 @@ No cloud AI API key is required.
 
 * 🧠 **Local AI** — Run models through Ollama without sending conversations to a cloud AI provider.
 * 🔒 **Privacy-first** — Chat history, memories, settings, logs, and generated charts stay on your machine.
-* 💬 **Text & GUI modes** — Use Nova from the terminal or desktop interface.
+* 💬 **Text & app-style GUI modes** — Use Nova from the terminal or a dedicated desktop interface with Chat, Memories, Shortcuts, and Settings spaces.
+* 🌍 **Language-aware replies** — Nova matches the language the user writes in; the desktop interface can be switched between English, Bahasa Melayu, Bahasa Indonesia, Chinese, and Japanese.
+* ✨ **Tunable personality** — Choose Nova's cheeky, warm, or focused interaction style from Settings.
 * 🎙️ **Voice input** — Optional speech-to-text with GPU acceleration when available.
 * 🔊 **Text-to-speech** — Windows Speech support with optional Piper integration.
 * 📁 **File analysis** — Read-only file analysis tools.
@@ -93,6 +95,21 @@ GUI mode:
 ```powershell
 python main.py --gui
 ```
+
+The GUI keeps its window size, selected language, voice-reply preference, model,
+and personality setting locally. Its Shortcuts area can open supported Windows
+apps only after you explicitly click an action.
+
+### Desktop icon and startup
+
+To create a **Nova** desktop icon and optionally launch Nova when you sign in,
+run this once from PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install_nova_launcher.ps1
+```
+
+Use `-SkipStartup` if you only want the desktop icon.
 
 Terminal mode:
 

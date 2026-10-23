@@ -4,7 +4,10 @@ from pathlib import Path
 import ctypes
 import os
 
-from charset_normalizer import from_bytes
+try:
+    from charset_normalizer import from_bytes
+except ImportError:  # Keep Nova's basic UI and file reader usable before setup.
+    from_bytes = None
 
 
 TEXT_EXTENSIONS = {
@@ -81,6 +84,9 @@ def _decode_text(raw, path):
         except UnicodeDecodeError:
             pass
 
+    if from_bytes is None:
+        # cp1252 is a practical Windows fallback and never crashes on bytes.
+        return raw.decode("cp1252", errors="replace")
     match = from_bytes(raw).best()
     if match is None:
         raise ValueError(f"I couldn't determine the text encoding for '{path.name}'.")
